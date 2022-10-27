@@ -1,0 +1,388 @@
+
+
+
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active")
+    navMenu.classList.toggle("active")
+})
+
+document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}))
+
+const cursor = document.querySelector(".cursor");
+var timeout;
+
+//follow cursor when mouse moves
+document.addEventListener("mousemove", (e) => {
+    let x = e.pageX;
+    let y = e.pageY;
+
+    cursor.style.top = y + "px";
+    cursor.style.left = x + "px";
+    cursor.style.display = "block";
+
+    function mouseStopped(){
+        cursor.style.display = "none";
+    }
+    clearTimeout(timeout);
+    timeout = setTimeout(mouseStopped, 1000);
+});
+
+document.addEventListener("mouseout", () => {
+    cursor.style.display = "none";
+});
+
+
+
+
+
+var angle = 0;
+function galleryspin(sign) {
+    spinner = document.querySelector(".spinner");
+    if(!sign){
+        angle = angle + 45;
+    }
+    else{
+        angle = angle - 45;
+    }
+    spinner.setAttribute("style", "transform: rotateY("+ angle +"deg);");
+}   
+
+CSS
+
+header{
+    background-color: #14080E;
+}
+
+li{
+    list-style: none;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+
+.navbar{
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.nav-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    margin: 10px;
+}
+
+.nav-link{
+    transform: 0.6s ease;
+}
+
+.nav-link:hover{
+    color: #9b5de5;
+}
+
+.hamburger{
+    display: none;
+}
+
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
+@media(max-width:768px){
+    .hamburger{
+        display: block;
+    }
+    .hambruger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hambruger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hambruger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-menu{
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        gap: 0;
+        flex-direction: column;
+        background-color: #14080E;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .nav-item{
+        margin: 16px 0;    
+    }
+    .nav-menu.active{
+        left: 0;
+    }
+}
+
+
+
+
+        <div class="slider"
+            <figure class="spinner">
+                <img src="images/KetoC1.png" alt="">
+                <img src="images/KetoC2.png" alt="">
+                <img src="images/KetoC3.png" alt="">
+                <img src="images/KetoC4.png" alt="">
+                <img src="images/KetoC5.png" alt="">
+                <img src="images/KetoC6.png" alt="">
+                <img src="images/KetoC7.png" alt="">
+                <img src="images/KetoC8.png" alt="">
+                <img src="images/KetoC9.png" alt="">
+                <img src="images/KetoC10.png" alt="">
+            </figure>
+        </div>
+
+
+.slider{
+    transform-style: preserve-3d;
+    height: 300px;
+    transform-origin: 50% 50% -500px;
+    transition: 1s;
+}
+
+.spinner img{
+    height: 300px;
+    width: 400px;
+    position: absolute;
+    left: 30%;
+    transform-origin: 50% 50% -500px;
+    outline: 1px solid transparent;
+}
+
+.spinner img:nth-child(1){ transform: rotateY(0deg);}
+.spinner img:nth-child(2){ transform: rotateY(-45deg);}
+.spinner img:nth-child(3){ transform: rotateY(-90deg);}
+.spinner img:nth-child(4){ transform: rotateY(-135deg);}
+.spinner img:nth-child(5){ transform: rotateY(-180deg);}
+.spinner img:nth-child(6){ transform: rotateY(-225deg);}
+.spinner img:nth-child(7){ transform: rotateY(-270deg);}
+.spinner img:nth-child(8){ transform: rotateY(-315deg);}
+.spinner img:nth-child(9){ transform: rotateY(-360deg);}
+.spinner img:nth-child(10){ transform: rotateY(-405deg);}
+
+.slider ~ span{
+    color: white;
+    margin: 5%;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 5rem;
+    transition: 0.6s color;
+    position: relative;
+    border-bottom: none;
+    line-height: 0;
+}
+
+.slider ~ span:hover{
+    color: whitesmoke;
+}
+
+
+
+
+
+
+:root {
+    --card-width: 200px;
+    --card-height: 300px;
+    --card-transition-duration: 800ms;
+    --card-transition-easing: ease;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+button:focus {
+    outline: none;
+    border: none;
+}
+
+.app {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.app_bg {
+    position: absolute;
+    width: 100%
+    height: 100%
+    z-index: -5;
+    filter: blur(8px);
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+
+
+.app_bg::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%
+    height: 100%
+    background: #000;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+.app_bg_image {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateX(var(--image-translate-offset,0));
+    width: 100%;
+    height: 100%;
+    transition: transform 1000ms ease, opacity 1000ms ease;
+    overflow: hidden;    
+}
+
+.app_bg_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.app_bg_image.current--image {
+    opacity: 1;
+    --image-translate-offset: 0;
+}
+
+.app_bg_image.previous--image, .app_bg_image.next--image {
+    opacity: 0;
+}
+
+.app_bg_image.previous--image {
+    --image-translate-offset: -25%;
+}
+
+.app_bg_image.next--image {
+    --image-translate-offset: 25%;
+}
+
+.cardList {
+    position: absolute;
+    
+}
+
+
+COOKBOOKS HTML
+
+
+        <div class="app">
+            <div class="cardList">
+                <button class="cardList_btn btn btn--left">
+                    <div class="icon">
+                        <svg>
+                            <use xlink:href="#arrow-left"></use>
+                        </svg>
+                    </div>
+                    </button>
+                    <div class="cards_wrapper">
+                        <div class="card current--card">
+                            <div class="card_image">
+                                <img src="images/" alt=""/>
+            </div>    
+        </div>
+        <div class="card next--card">
+            <div class="card_image">
+                <img src="images/" alt=""/>
+            </div>
+        </div>
+
+        <div class="card previous--card">
+            <div class="card_image">
+            <img src="images/" alt=""/>
+            </div>
+        </div>
+                    </div>
+        <button class="cardList_btn btn btn--right">
+            <div class="icon">
+                <svg>
+                    <use xlink:href="#arrow right"></use>
+                </svg>
+            </div>
+        </button>
+        </div>
+
+        <div class="infoList">
+            <div class="info_wrapper">
+                <div class="info current--info">
+                    <h1 class="text name">cook1</h1>
+                    <h4 class="EstimatedPrice"</h4>
+                        <button class="pricetracker"></button>
+                        <p class="text description">This book goes through recipes regarding carbs like bread for keto</p>
+                </div>
+
+        <div class="info next--info">
+                    <h1 class="text name">cook2</h1>
+                    <h4 class="EstimatedPrice">$24.99</h4>
+                        <button class="pricetracker"></button>
+                        <p class="text description">This book goes through recipes regarding snacks and desserts.</p>
+        </div>                
+        <div class="info previous--info">
+                    <h1 class="text name">cook3</h1>
+                    <h4 class="EstimatedPrice">$31.99</h4>
+                        <button class="pricetracker"></button>
+                        <p class="text description">This book goes through recipes regarding snacks and desserts.</p>
+        </div>
+        </div>
+
+    <div class="app_bg">
+        <div class="app_bg_image current--image">
+    <img src="images/" alt=""/>
+        </div>
+    <div class="app_bg_image next--image">
+        <img src="images/" alt=""/>
+    </div>
+    <div class="app_bg_image previous--image">
+        <img src="images/" alt=""/>
+    </div>
+    </div>
+    </div>
+    <div class="loading_wrapper">
+        <div class="loader--text">Loading..</div>
+        <div class="loader">
+            <span></span>
+        </div>
+    </div>
+
+    <svg class="icons" style="display: none;">
+        <symbol id="arrow-left" xmins='http://www.w3.org/2000/svg' viewbox='0 0 512 512'>
+    <polyline points='328 112 184 256 328 400'
+        style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/>
+        </symbol>
+        <symbol id="arrow-right" xmins='http://www.w3.org/2000/svg' viewbox='0 0 512 512'>
+        <polyline points='184 112 328 256 400' style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/>
+        </symbol>
+    </svg>
+
